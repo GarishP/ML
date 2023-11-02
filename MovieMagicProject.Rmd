@@ -1,0 +1,440 @@
+---
+title: "MKTG 6600: Final Project"
+Garish Prajapat
+
+
+output:
+  html_document: default
+  pdf_document: default
+---
+
+#Written Portion
+
+## Question 1
+
+Predictors with a Significant Influence on Amount Spent on Concessions:
+"age," "movies_seen," "streaming", “days_member” these predictors have p-values less than 0.05, indicating that they are statistically significant in explaining the variation in the amount spent on concessions. Age and days_members showcased particularly strong associations with p-values significantly less than 0.05, emphasizing their importance in the model. 
+
+Multicollinearity among predictors was assessed using the Variance Inflation Factor (VIF). In our analysis, the highest VIF was observed for the predictor job, with a VIF value of 2.55, followed by education at 2.30. While these VIF values are relatively higher compared to others in the model, they remain below the commonly accepted threshold of 10, which is typically considered problematic in terms of multicollinearity.
+
+
+## Question 2
+
+In assessing the influence of various predictors on the amount spent on concessions, the regression analysis provides the following insights: The age, days_member, movies_seen, jobretired, jobself-employed, jobunknown, seen_alone and educationtertiary predictors have a positive influence on the amount spent. 
+
+Conversely, jobentrepreneur, jobfreelance, jobhospitality, streaming, educationsecondary, educationunknown and discount1 exhibited a negative influence. When comparing the results from both the standard regression and penalized regression models, it's observed that some predictors, such as jobhospitality, have a pronounced negative effect in both analyses, while others like jobstudent showed significance in penalized regression but were not significant in the standard regression. This indicates that penalized regression, by adding penalties for including unnecessary predictors, offers a more refined and possibly more accurate perspective on the importance and influence of each predictor.  
+
+Thus, while both analyses offer valuable insights, the penalized regression provides a clearer picture of the true relationship between predictors and the outcome, aiding in determining the most influential factors on the amount spent on concessions.
+
+If we ran a neural net model, it will not help in finding the significant predictors as NN is known for its black box nature and it is an unsupervised machine learning method. Moreover, due to the black box nature of neural networks, it is impossible to interpret the magnitude and direction of their influence on the outcome variable. Neural networks take in inputs and give out outputs, but with no explanation to how the model actually came to that conclusion. On the other hand, linear, Lasso, and Ridge models provide more transparent insights into the relationships between predictors and the outcome variable, making them more appropriate for understanding the magnitude and direction of factors influencing concession sales.
+
+
+## Question 3
+
+Lasso penalized regression is more effective at handling collinearity and provides a valid measure of variable significance. It helps select significant variables by considering their actual contribution in the presence of collinearity. Notably, the variables identified as significant in linear regression are different from those highlighted by Lasso because linear regression doesn't account for collinearity. Lasso's output, with coefficients such as age 0.16774981, jobhospitality -1.86219528, jobretired 0.25495291, jobself-employed 1.16873895, movies_seen 0.37101939, streaming -0.5898292, and days_member 0.04909729, reflects variables that have a substantial impact on their own. For this reason, penalized regression is preferable to simple linear regression.
+
+## Question 4
+
+Since in question 2 we decided to use penalized regression, here we focuses on penalized regression splits.
+
+RMSE: For the 70-30 split, the RMSE is 9.488647, while for the 80-20 split, it is 9.573287. This suggests that, on average, the model's predictions are slightly closer to the actual values in the 70-30 split.
+
+R-squared: In the 70-30 split, the R-squared value is 0.6376864, whereas in the 80-20 split, it is 0.6328058. This indicates that the model in the 70-30 split explains a larger proportion of the variance in the amount_spent compared to the 80-20 split.
+
+In summary, the 70-30 split yields a model with slightly improved predictive performance, as indicated by a lower RMSE and a higher R-squared, when compared to the 80-20 split.
+
+## Question 5
+
+Based on the regression analysis, MovieMagic can formulate strategies based on their customer demographics and behaviors. One significant trend is the positive correlation between age and concession spending, with statistical significance (p < 0.05). For every additional year in a customer's age, there's an approximate increase of $0.19 in concession sales. In simpler terms, older moviegoers tend to spend dollar 0.19 more on concessions compared to younger ones.
+
+Moreover, the data indicates the importance of long-term customer loyalty. For each additional day a person remains a member of MovieMagic, their concession spending increases by approximately $0.05, and this relationship is statistically significant (p < 0.05). This highlights the potential of loyalty programs; the longer someone remains a member, the more they are likely to spend on refreshments.
+
+Incorporating these insights, MovieMagic could customize marketing campaigns aimed at older audiences, leveraging the statistically proven higher concession spending in this demographic. Simultaneously, they can enhance loyalty perks to encourage long-term membership and frequent visits to the cinema, capitalizing on the statistically significant relationship between loyalty and concession spending.
+
+## Question 6
+
+The strategies would differ, however only slightly.
+
+In the positive word cloud we see a strong emphasis on things we would expect at a movie theater. In the center there are movie related words, in the second ring there is emphasis on food and drink, and moving out even farther we get emphasis on more specific items like comfort levels. This would drive our strategy to focus on the movie watching experience itself, with a secondary focus on concessions that can be sold. This is not overly surprising since this is a movie theater.
+
+However, if we look at the negative word cloud we see a different picture. Instead of having movies in the middle, there's an emphasis on food, service and time. Movies are barely even in the picture. This seems to indicate that happy customers remember the movie, and unhappy customers remember the things they bought at the movies and the service they received. Crafting a strategy around these points would lead us to put a large emphasis on improving our concession experience and customer service.
+
+## Question 7
+
+In our LDA we created three categories whose most prominent words were Movie, Food, and Place. This makes our topics the movie experience, the food and beverages sold at the movies, and the location itself.
+
+Given these three categories we would offer different strategies for each which can be mixed and matched based on necessity:
+
+Movie: The words surrounding this topic are based around the movie going experience itself. This topic would gear itself to the experience of watching movies and the feeling customers get from this experience. This strategy points out that we go to the movie theater for the movies, obviously. To increase concession stand sales using this strategy we should focus on promotions that bundle concessions and tickets together, or perhaps allow patrons to order while they watch the movie. This strategy would lend itself to promotions such as bundling, due to their focus on the movie experience itself. This would justify a promotion business strategy.
+
+
+Food: This cluster advocates for the quality and taste of the food. The strategy that we can derive from this is to make the food look “pretty”, which is one of our cluster words. Once they get the food, we need to make sure it is tasty enough for them to come back. This strategy does not lend itself to promotions, because it is enticing patrons with the allure of good tasting food, not with good deals or bundles.
+
+Location: The atmosphere of a location is also a major player for whether customers want to come back or not. Strategies aiming for these consumers seem to be based more on loyalty, as the name of the company is one of the top 3 words in the cluster. These are the customers that love the location and the business that runs the location, and are likely to be enticed by loyalty programs. This means this cluster should be advertised with loyalty programs to keep their love of our cinema specifically high.
+
+Overall, those who focus on the movies should be advertised to with movie and concession bundles, those that focus on the food should be advertised to with pretty food on location, and those who focus on the location itself should be advertised to with loyalty programs in order to get the most concession sales. Obviously LDA model clusters can only take us so far on determining what kind of customers these people are, but given this information this is the strategy we can best derive.
+
+## Question 8
+
+The regression analysis conducted for MovieMagic, based on the data set provided, reveals associations between various predictors and the amount spent on concessions. 
+
+However, these associations don't definitively establish causality. Our data set is observational, not experimental, meaning that we're identifying patterns without controlled conditions. This opens the possibility of confounding variables influencing the results—factors we haven't accounted for but that might sway both predictors and outcomes. Additionally, potential omitted variables, like movie type or showtime, might play a role in concession spending but aren't captured in our data set. There are further problems with the dataset, namely that the dataset is fairly small, especially the data with the reviews. 
+
+Furthermore, we must consider the risk of reverse causality: while it appears that long-term members spend more on concessions, it might also be true that big spenders retain their memberships longer. To truly unearth causal relationships, a randomized controlled trial (RCT) would be ideal. For instance, MovieMagic could randomly send a discount coupon on concessions to some members while withholding it from others, and then compare the average concession spending between the two groups. This would determine the causal effect of the discount on spending. To add depth, the experiment could be stratified to observe if age or membership duration influences the discount's effect. Such a structured approach would give MovieMagic a more concrete basis for their marketing strategies, ensuring they get the most out of their promotional efforts.
+
+To further understand our confounding variables, we can run a similar parallel experiment. We can reach out to those customers that left a comment on our website, sorting them in to 3 groups, or clusters, based on our LDA model. We will send similar coupons to all three groups one at a time and see how each group reacts. The experiment would go something like this. In the first round we send coupons that bundle movie tickets and popcorn with unique coupon codes so we can track who uses the coupons and who does not. Then, we can compare the rates of coupon usage by group. Our hypothesis would be similar to the answer 7 break down of which coupons entice which group, but through this experiment we can try to break our customers in to segments and identify how to more effectively market to them. We could also hand out surveys to these customers to see what our penalized regression models predict these customers to act like and if there results significantly deviate from our predictions. This will better help us understand our confounding variables, while also seeing if our segmentation is enhancing customer purchasing with confounding variables in mind.
+
+```{r, warning=False, message=FALSE}
+library(dplyr)
+library(caret)
+library(Metrics)
+library(corrplot)
+library(tidyverse)
+library(skimr)
+library(ggplot2)
+library(car)
+library(neuralnet)
+library(fastDummies)
+library(glmnet)
+
+data <- read.csv("http://data.mishra.us/files/project_data.csv")
+
+column_names <- names(data)
+print(column_names)
+
+
+# Basic Data Analysis
+
+# Checking for missing values in the entire dataset
+missing_values <- sum(is.na(data))
+cat("Total missing values in the dataset: ", missing_values, "\n")
+
+head(data, n =50)
+summary(data)
+
+# Converting "yes" and "no" to binary values (1 and 0) in the "discount" column
+
+data$discount[data$discount == "yes"] <- 1
+data$discount[data$discount == "no"] <- 0
+
+# Converting "seen_alone" to binary (0 or 1)
+data$seen_alone <- ifelse(data$seen_alone == "yes", 1, 0)
+
+head(data, n=50)
+
+cat_col<- c("job","education","discount")
+data[cat_col]<-lapply(data[cat_col],factor)
+```
+
+**Regression analysis**
+
+
+```{r, warning=FALSE, message=FALSE}
+
+#Question 1
+
+# To identify which predictors have a significant influence on the amount spent on concessions and to determine if any predictors are multicollinear, we are performing a multiple linear regression analysis and will examine the coefficients, p-values, and correlations among the predictors.
+
+model <- lm(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = data)
+summary(model)
+
+#VIF of the model
+vif(model)
+```
+
+**Prediction Models**
+
+```{r, warning=FALSE, message=FALSE}
+
+#Question 2: Linear Regression
+
+# Linear Model
+model<- lm(amount_spent~., data = data)
+coefficients(model)
+
+x <- model.matrix(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = data)
+y <- data$amount_spent
+
+# Lasso Regression
+lasso_model <- cv.glmnet(x, y, alpha=1) 
+
+best_lambda <- lasso_model$lambda.min
+lasso_coefficients <- coef(lasso_model, s = best_lambda)
+print(lasso_coefficients)
+
+# Ridge Regression
+ridge_model <- cv.glmnet(x, y, alpha=0)  
+
+best_lambda <- ridge_model$lambda.min
+ridge_coefficients <- coef(ridge_model, s = best_lambda)
+print(ridge_coefficients)
+
+```
+
+**Penalized Regression**
+
+```{r, warning=FALSE, message=FALSE}
+
+# Question 4
+
+# 70-30 split
+tr_Idx1 <- createDataPartition(data$amount_spent, p = 0.7, list = FALSE)
+Tr_data1 <- data[tr_Idx1,]
+Tes_data1 <- data[-tr_Idx1,]
+
+# 80-20 split
+tr_Idx2 <- createDataPartition(data$amount_spent, p = 0.8, list = FALSE)
+Tr_data2 <- data[tr_Idx2,]
+Tes_data2 <- data[-tr_Idx2,]
+
+# lm 70-30 split
+model1 <- lm(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = Tr_data1)
+
+# lm 80-20 split
+model2 <- lm(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = Tr_data2)
+
+predictions1 <- predict(model1, newdata = Tes_data1)
+
+predictions2 <- predict(model2, newdata = Tes_data2)
+
+# RMSE and R-squared for the 70-30 split
+rmse1 <- sqrt(mean((predictions1 - Tes_data1$amount_spent)^2))
+rsquared1 <- 1 - sum((predictions1 - Tes_data1$amount_spent)^2) / sum((Tes_data1$amount_spent - mean(Tes_data1$amount_spent))^2)
+
+# RMSE and R-squared for the 80-20 split
+rmse2 <- sqrt(mean((predictions2 - Tes_data2$amount_spent)^2))
+rsquared2 <- 1 - sum((predictions2 - Tes_data2$amount_spent)^2) / sum((Tes_data2$amount_spent - mean(Tes_data2$amount_spent))^2)
+
+
+cat("70-30 Split:\n")
+cat("RMSE: ", rmse1, "\n")
+cat("R-squared: ", rsquared1, "\n")
+
+cat("\n80-20 Split:\n")
+cat("RMSE: ", rmse2, "\n")
+cat("R-squared: ", rsquared2, "\n")     
+
+set.seed(123)
+
+# Training 70-30 
+train_indices <- sample(1:nrow(data), 0.7 * nrow(data))
+
+
+train_data <- data[train_indices, ]
+test_data <- data[-train_indices, ]
+
+x_train <- model.matrix(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = train_data)
+y_train <- train_data$amount_spent
+x_test <- model.matrix(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = test_data)
+y_test <- test_data$amount_spent
+
+
+lasso_model <- cv.glmnet(x_train, y_train, alpha = 1)
+
+best_lambda_lasso <- lasso_model$lambda.min
+
+lasso_fit <- glmnet(x_train, y_train, alpha = 1, lambda = best_lambda_lasso)
+
+lasso_predictions <- predict(lasso_fit, s = best_lambda_lasso, newx = x_test)
+
+
+rmse_lasso <- rmse(lasso_predictions, y_test)
+
+rsquared_lasso <- 1 - (sum((y_test - lasso_predictions)^2) / sum((y_test - mean(y_test))^2))
+
+ridge_model <- cv.glmnet(x_train, y_train, alpha = 0)
+
+best_lambda_ridge <- ridge_model$lambda.min
+
+ridge_fit <- glmnet(x_train, y_train, alpha = 0, lambda = best_lambda_ridge)
+
+ridge_predictions <- predict(ridge_fit, s = best_lambda_ridge, newx = x_test)
+
+rmse_ridge <- rmse(ridge_predictions, y_test)
+
+rsquared_ridge <- 1 - (sum((y_test - ridge_predictions)^2) / sum((y_test - mean(y_test))^2))
+
+cat("Lasso RMSE (70-30 Split):", rmse_lasso, "\n")
+cat("Lasso R-squared (70-30 Split):", rsquared_lasso, "\n")
+cat("Ridge RMSE (70-30 Split):", rmse_ridge, "\n")
+cat("Ridge R-squared (70-30 Split):", rsquared_ridge, "\n")
+
+
+# training 80-20
+train_indices <- sample(1:nrow(data), 0.8 * nrow(data))
+
+
+train_data <- data[train_indices, ]
+test_data <- data[-train_indices, ]
+
+
+x_train <- model.matrix(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = train_data)
+y_train <- train_data$amount_spent
+x_test <- model.matrix(amount_spent ~ age + job + movies_seen + education + streaming + seen_alone + discount + days_member, data = test_data)
+y_test <- test_data$amount_spent
+
+
+lasso_model <- cv.glmnet(x_train, y_train, alpha = 1)
+
+
+best_lambda_lasso <- lasso_model$lambda.min
+
+
+lasso_fit <- glmnet(x_train, y_train, alpha = 1, lambda = best_lambda_lasso)
+
+
+lasso_predictions <- predict(lasso_fit, s = best_lambda_lasso, newx = x_test)
+
+rmse_lasso <- rmse(lasso_predictions, y_test)
+
+
+rsquared_lasso <- 1 - (sum((y_test - lasso_predictions)^2) / sum((y_test - mean(y_test))^2))
+
+
+ridge_model <- cv.glmnet(x_train, y_train, alpha = 0)
+
+
+best_lambda_ridge <- ridge_model$lambda.min
+
+
+ridge_fit <- glmnet(x_train, y_train, alpha = 0, lambda = best_lambda_ridge)
+
+
+ridge_predictions <- predict(ridge_fit, s = best_lambda_ridge, newx = x_test)
+
+
+rmse_ridge <- rmse(ridge_predictions, y_test)
+
+
+rsquared_ridge <- 1 - (sum((y_test - ridge_predictions)^2) / sum((y_test - mean(y_test))^2))
+
+
+cat("Lasso RMSE (80-20 Split):", rmse_lasso, "\n")
+cat("Lasso R-squared (80-20 Split):", rsquared_lasso, "\n")
+cat("Ridge RMSE (80-20 Split):", rmse_ridge, "\n")
+cat("Ridge R-squared (80-20 Split):", rsquared_ridge, "\n")
+
+```
+**Text Analysis WORD CLOUD**
+
+```{r, warning=FALSE, message=FALSE}
+
+#Question 6 Text analysis
+
+library(tm)
+library(RTextTools)
+library(wordcloud)
+library(ggplot2)
+set.seed(1234)
+
+#Bring in words
+text <- read.csv(url("http://data.mishra.us/files/project_reviews.csv"))
+
+#categorize into two groups
+text$valence[text$star == 1 | text$star == 2] = "negative"
+text$valence[text$star == 3 | text$star == 4 | text$star == 5] = "positive"
+text$text <- as.character(text$text)
+
+negative_text <- text[text$valence == "negative", ]
+positive_text <- text[text$valence == "positive", ]
+
+#positive word cloud 
+#clean data
+corpus <- VCorpus(VectorSource(positive_text$text))
+toSpace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
+# a function to clean /,@,\\,|
+corpus <- tm_map(corpus, toSpace, "/|@|\\|")
+corpus<- tm_map(corpus, stripWhitespace)
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removeNumbers)
+corpus <- tm_map(corpus, removePunctuation)
+corpus <- tm_map(corpus, removeWords, stopwords(kind="en"))
+
+dtm <- TermDocumentMatrix(corpus)
+m <- as.matrix(dtm)
+v <- sort(rowSums(m),decreasing=TRUE)
+d <- data.frame(word = names(v),freq=v)
+
+# converts document in to a matrix
+mtrix <- as.matrix(positive_text)
+
+wordcloud(words = d$word, freq = d$freq, min.freq = 2,
+  max.words=100, random.order=FALSE, rot.per=0.35,
+  colors=brewer.pal(8, "Dark2"),scale=c(3, 0.7))
+
+#create word cloud for negative reviews
+#clean data
+corpus2 <- VCorpus(VectorSource(negative_text$text))
+toSpace2 <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
+# a function to clean /,@,\\,|
+corpus2 <- tm_map(corpus2, toSpace2, "/|@|\\|")
+corpus2<- tm_map(corpus2, stripWhitespace)
+corpus2 <- tm_map(corpus2, content_transformer(tolower))
+corpus2 <- tm_map(corpus2, removeNumbers)
+corpus2 <- tm_map(corpus2, removePunctuation)
+corpus2 <- tm_map(corpus2, removeWords, stopwords(kind="en"))
+
+dtm2 <- TermDocumentMatrix(corpus2)
+m2 <- as.matrix(dtm2)
+v2 <- sort(rowSums(m2),decreasing=TRUE)
+d2 <- data.frame(word = names(v2),freq=v2)
+
+# converts document in to a matrix
+mtrix2 <- as.matrix(negative_text)
+
+wordcloud(words = d2$word, freq = d2$freq, min.freq = 2,
+  max.words=100, random.order=FALSE, rot.per=0.35,
+  colors=brewer.pal(8, "Dark2"),scale=c(1.2, 0.6))
+```
+
+
+**Text Analysis - LDA**
+```{r, warning=FALSE, message=FALSE}
+
+# Question 7
+
+library(topicmodels)
+library(tidytext)
+library(dplyr)
+
+#Bring in word
+# perform a Latent Dirichlet Analysis
+text <- read.csv("http://data.mishra.us/files/project_reviews.csv")
+
+corpus <- VCorpus(VectorSource(text$text))
+
+toSpace <- content_transformer(function(x, pattern) gsub(pattern, " ", x))
+corpus <- tm_map(corpus, toSpace, "/|@|\\|")
+corpus<- tm_map(corpus, stripWhitespace) # remove white space
+
+corpus <- tm_map(corpus, content_transformer(tolower))
+corpus <- tm_map(corpus, removeNumbers) 
+corpus <- tm_map(corpus, removePunctuation) 
+corpus <- tm_map(corpus, removeWords, stopwords("en"))
+
+dtm <- DocumentTermMatrix(corpus)
+set.seed(234)
+rowTotals <- apply(dtm , 1, sum)
+
+dtm <- dtm[rowTotals> 0, ]
+lda <- LDA(dtm, k = 3, method = "Gibbs", control = NULL)
+topics <- tidy(lda, matrix = "beta") 
+
+top_terms <- topics %>%
+  group_by(topic) %>%
+  top_n(10, beta) %>% # top_n picks 10 topics.
+  ungroup() %>%
+  arrange(topic, -beta)
+
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  coord_flip()
+
+# Topic 1 is around the movies, topic 2 is the food and service, topic 3 is the building and location
+```
+
+
+
